@@ -1,0 +1,57 @@
+ <div [formGroup]="basicFormGroup">
+   <!-- Name -->
+   <div class="form-group row">
+    <label class="col-2">Name<em class="text-danger">*</em></label>
+    <div class="col-3">
+      <input type="text" placeholder="First Name" class="form-control" formControlName="firstName" />
+    </div>
+    <div class="col-3">
+      <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName" />
+    </div>
+  </div>
+  <!-- /Name -->
+
+  <!-- Email -->
+  <div class="form-group row">
+    <label class="col-2">Email<em class="text-danger">*</em></label>
+    <div class="col-6">
+      <input type="email" class="form-control" formControlName="email" />
+    </div>
+  </div>
+  <!-- /Email -->
+
+  <!-- Gender -->
+  <div class="form-group row">
+    <label class="col-2">Gender</label>
+    <div class="col-3">
+
+      <select class="form-control" formControlName="gender">
+        <option value="0">Why do you care?</option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+      </select>
+    </div>
+  </div>
+  <!-- /Gender -->
+
+  <!-- Age -->
+  <div class="form-group row">
+    <label class="col-2">Age</label>
+    <div class="col-2">
+      <input type="number" class="form-control" formControlName="age" />
+    </div>
+  </div>
+  <!-- /Age -->
+
+  <!-- Phone -->
+  <div class="form-group row" formGroupName="phone">
+    <label class="col-2">Phone</label>
+    <div class="col-2">
+      <input type="number" class="form-control" formControlName="areaCode" placeholder="Area Code" />
+    </div>
+    <div class="col-4">
+      <input type="number" class="form-control" formControlName="phoneNumber" placeholder="Number" />
+    </div>
+  </div>
+  <!-- /Phone -->
+ </div>

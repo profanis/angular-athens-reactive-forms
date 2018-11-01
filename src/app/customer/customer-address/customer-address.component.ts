@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { CountryModel } from "../country.model";
@@ -14,14 +9,10 @@ import { CountryModel } from "../country.model";
   styleUrls: ["./customer-address.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CustomerDetailComponent implements OnInit {
+export class CustomerDetailComponent {
   @Input()
   addressFormGroup: FormGroup;
 
   @Input()
   countries: CountryModel[];
-
-  constructor() {}
-
-  ngOnInit() {}
 }

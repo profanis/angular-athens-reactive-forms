@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FormArray } from "@angular/forms";
+import { FormArray, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "app-customer-credit-cards",
@@ -10,17 +10,35 @@ export class CustomerCreditCardsComponent implements OnInit {
   @Input()
   creditCardsFormArray: FormArray;
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.creditCardsFormArray.push(this.initCreditCard());
+  }
 
   addCreditCard() {
     const control = this.creditCardsFormArray;
-    // control.push(this.initCreditCard());
+    control.push(this.initCreditCard());
   }
 
-  removeCreditCard(i: number) {
+  removeCreditCard(index: number) {
     const control = this.creditCardsFormArray;
-    control.removeAt(i);
+    control.removeAt(index);
   }
+
+
+  showDeleteButton(index: number) {
+    return index > 0 || this.creditCardsFormArray.length === 1;
+  }
+
+
+  private initCreditCard() {
+    return this.fb.group({
+      cardAlias: [],
+      cardHolderName: [],
+      cardNumber: [],
+      ccv: []
+    });
+  }
+
 }

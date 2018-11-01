@@ -23,14 +23,16 @@ export class CustomerMasterComponent implements OnInit {
 
   private buildForm() {
     this.theForm = this.fb.group({
-      firstName: [, Validators.required],
-      lastName: [, Validators.required],
-      age: [, Validators.min(0)],
-      gender: [],
-      email: [, Validators.email],
-      phone: this.fb.group({
-        areaCode: [],
-        phoneNumber: []
+      basic: this.fb.group({
+        firstName: [, Validators.required],
+        lastName: [, Validators.required],
+        age: [, Validators.min(0)],
+        gender: [],
+        email: [, [Validators.required, Validators.email]],
+        phone: this.fb.group({
+          areaCode: [],
+          phoneNumber: []
+        }),
       }),
       address: this.fb.group({
         street: [, Validators.required],
@@ -38,15 +40,18 @@ export class CustomerMasterComponent implements OnInit {
         postal: [, Validators.required],
         country: []
       }),
-      creditCards: this.fb.array([this.initCreditCard()])
+      creditCards: this.fb.array([])
     });
   }
 
-  initCreditCard() {
+  // I had to remove this method from the master component
+  // as it is needed from a dump component
+  /* initCreditCard() {
     return this.fb.group({
-      name: [],
-      number: [],
+      cardAlias: [],
+      cardHolderName: [],
+      cardNumber: [],
       ccv: []
     });
-  }
+  } */
 }

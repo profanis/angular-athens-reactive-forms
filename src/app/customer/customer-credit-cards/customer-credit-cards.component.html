@@ -1,3 +1,33 @@
-<p>
-  customer-credit-cards works!
-</p>
+<hr/>
+<div  class="form-group row"
+      [formGroup]="card"
+      *ngFor="let card of creditCardsFormArray.controls; let idx=index; let isLast=last; let isFirst=first">
+  <label class="col-2">Credit Card<em class="text-danger">*</em></label>
+  <div class="col-2">
+    <input type="text" class="form-control" formControlName="cardAlias" placeholder="Alias" />
+  </div>
+  <div class="col-3">
+    <input type="text" class="form-control" formControlName="cardHolderName" placeholder="Name" />
+  </div>
+  <div class="col-2">
+    <input type="text" class="form-control" formControlName="cardNumber" placeholder="Number" />
+  </div>
+  <div class="col-1">
+    <input type="text" class="form-control" formControlName="ccv" placeholder="CCV" />
+  </div>
+  <div class="col-2">
+
+    <button   type="button"
+              class="btn btn-link"
+              (click)="addCreditCard()"
+              title="add credit card"
+              *ngIf="isLast">+</button>
+
+    <button   type="button"
+              class="btn btn-link"
+              (click)="removeCreditCard(idx)"
+              title="remove credit card"
+              *ngIf="!isFirst">-</button>
+
+  </div>
+</div>
