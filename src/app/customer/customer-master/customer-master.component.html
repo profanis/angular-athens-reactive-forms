@@ -1,14 +1,33 @@
 <div class="card">
   <div class="card-body">
-    <form [formGroup]="theForm" novalidate autocomplete="off">
+      <div class="card">
+        <div class="card-header">
+          Basic Info
+        </div>
+        <div class="card-body">
+          <app-customer-basic></app-customer-basic>
+        </div>
+      </div>
 
-     <app-customer-basic [basicFormGroup]="theForm.get('basic')"></app-customer-basic>
+      <div class="card mt-3">
+        <div class="card-header">
+          Address
+        </div>
+        <div class="card-body">
+          <app-customer-address [countries]="countries$ | async"></app-customer-address>
+        </div>
+      </div>
 
-      <!-- TODO: assign the theForm.get('address') in a variable-->
-      <app-customer-address [countries]="countries$ | async" [addressFormGroup]="theForm.get('address')"></app-customer-address>
-
-      <app-customer-credit-cards [creditCardsFormArray]="theForm.get('creditCards')"></app-customer-credit-cards>
-      <div>The form is valid: {{theForm.valid}}</div>
-    </form>
+      <div class="card mt-3">
+        <div class="card-header">
+          Credit Cards
+        </div>
+        <div class="card-body">
+          <app-customer-credit-cards></app-customer-credit-cards>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary" [disabled]="!formIsValid">Submit</button>
+      </div>
   </div>
 </div>
