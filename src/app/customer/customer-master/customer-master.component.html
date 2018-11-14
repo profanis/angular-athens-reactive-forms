@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="mt-3">
-        <button type="submit" class="btn btn-primary" [disabled]="!formIsValid">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!(formIsValid$ | async)">Submit</button>
       </div>
   </div>
 </div>

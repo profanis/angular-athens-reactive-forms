@@ -14,7 +14,7 @@ import { CustomerCreditCardsComponent } from '../customer-credit-cards/customer-
 })
 export class CustomerMasterComponent implements OnInit, AfterViewInit {
 
-  formIsValid: boolean;
+  formIsValid$: Observable<boolean>;
   countries$: Observable<any[]>;
 
   @ViewChild(CustomerBasicComponent) customerBasicComponent;
@@ -44,14 +44,11 @@ export class CustomerMasterComponent implements OnInit, AfterViewInit {
       statusIsTrue
     );
 
-    combineLatest(basicFormStatus,
-                  addressFormStatus,
-                  creditCardFormStatus).subscribe((statuses: boolean[]) => {
-
-        this.formIsValid = statuses.every(status => status === true);
-
-    });
-
+    this.formIsValid$ = combineLatest(basicFormStatus,
+                                      addressFormStatus,
+                                      creditCardFormStatus).pipe(
+                                          map((statuses: boolean[]) => statuses.every(status => status === true))
+                                      );
   }
 
 
