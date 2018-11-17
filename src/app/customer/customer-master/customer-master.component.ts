@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { CountryService } from '../customer-address/countries.service';
@@ -34,26 +34,10 @@ export class CustomerMasterComponent implements OnInit {
 
   private buildForm() {
     this.theForm = this.fb.group({
-      basic: this.fb.group({
-        firstName: [, Validators.required],
-        lastName: [, Validators.required],
-        age: [, Validators.min(0)],
-        gender: [],
-        email: [, [Validators.required, Validators.email]],
-        phone: this.fb.group({
-          areaCode: [],
-          phoneNumber: []
-        })
-      }),
-      address: this.fb.group({
-        street: [, Validators.required],
-        number: [, [Validators.required, Validators.min(0)]],
-        postal: [, Validators.required],
-        country: []
-      }),
+      basic: this.fb.group({}),
+      address: this.fb.group({}),
       creditCards: this.fb.array([])
     });
   }
-
 
 }
