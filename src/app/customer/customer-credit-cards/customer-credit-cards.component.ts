@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-credit-cards',
   templateUrl: './customer-credit-cards.component.html',
-  styleUrls: ['./customer-credit-cards.component.css']
+  styleUrls: ['./customer-credit-cards.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomerCreditCardsComponent {
 
