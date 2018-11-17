@@ -1,11 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { CountryService } from '../customer-address/countries.service';
-import { CustomerDetailComponent } from '../customer-address/customer-address.component';
-import { CustomerBasicComponent } from '../customer-basic/customer-basic.component';
-import { CustomerCreditCardsComponent } from '../customer-credit-cards/customer-credit-cards.component';
 
 @Component({
   selector: 'app-customer-master',
@@ -16,10 +13,6 @@ export class CustomerMasterComponent implements OnInit {
 
   theForm: FormGroup;
   countries$: Observable<any[]>;
-
-  @ViewChild(CustomerBasicComponent) customerBasicComponent;
-  @ViewChild(CustomerCreditCardsComponent) customerCreditCardsComponent;
-  @ViewChild(CustomerDetailComponent) customerDetailComponent;
 
   constructor(
     private countryService: CountryService,
