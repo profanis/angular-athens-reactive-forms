@@ -51,17 +51,9 @@ export class CustomerMasterComponent implements OnInit {
         postal: [, Validators.required],
         country: []
       }),
-      creditCards: this.fb.array([this.initCreditCard()])
+      creditCards: this.fb.array([])
     });
   }
 
-  initCreditCard() {
-    return this.fb.group({
-      cardAlias: ['', Validators.required],
-      cardHolderName: ['', Validators.required],
-      cardNumber: ['', Validators.required],
-      ccv: ['', Validators.required]
-    });
-  }
 
 }

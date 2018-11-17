@@ -6,17 +6,34 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './customer-credit-cards.component.html',
   styleUrls: ['./customer-credit-cards.component.css']
 })
-export class CustomerCreditCardsComponent {
+export class CustomerCreditCardsComponent implements OnInit {
 
   @Input()
   creditCardsFormArray: FormArray;
 
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.creditCardsFormArray.push(this.initCreditCard());
+  }
 
   addCreditCard() {
+    const control = this.creditCardsFormArray;
+    control.push(this.initCreditCard());
   }
 
   removeCreditCard(index: number) {
+    const control = this.creditCardsFormArray;
+    control.removeAt(index);
   }
 
+  initCreditCard() {
+    return this.fb.group({
+      cardAlias: ['', Validators.required],
+      cardHolderName: ['', Validators.required],
+      cardNumber: ['', Validators.required],
+      ccv: ['', Validators.required]
+    });
+  }
 
 }
