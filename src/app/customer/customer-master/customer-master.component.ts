@@ -17,10 +17,6 @@ export class CustomerMasterComponent implements OnInit {
   theForm: FormGroup;
   countries$: Observable<any[]>;
 
-  @ViewChild(CustomerBasicComponent) customerBasicComponent;
-  @ViewChild(CustomerCreditCardsComponent) customerCreditCardsComponent;
-  @ViewChild(CustomerDetailComponent) customerDetailComponent;
-
   constructor(
     private countryService: CountryService,
     private fb: FormBuilder
