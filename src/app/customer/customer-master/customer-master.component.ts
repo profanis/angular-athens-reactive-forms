@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { CountryService } from '../customer-address/countries.service';
 import { CustomerDetailComponent } from '../customer-address/customer-address.component';
 import { CustomerBasicComponent } from '../customer-basic/customer-basic.component';
 import { CustomerCreditCardsComponent } from '../customer-credit-cards/customer-credit-cards.component';
+
 
 @Component({
   selector: 'app-customer-master',
@@ -17,9 +17,9 @@ export class CustomerMasterComponent implements OnInit, AfterViewInit {
   formIsValid$: Observable<boolean>;
   countries$: Observable<any[]>;
 
-  @ViewChild(CustomerBasicComponent) customerBasicComponent;
-  @ViewChild(CustomerCreditCardsComponent) customerCreditCardsComponent;
-  @ViewChild(CustomerDetailComponent) customerDetailComponent;
+  @ViewChild(CustomerBasicComponent, { static: true }) customerBasicComponent;
+  @ViewChild(CustomerCreditCardsComponent, { static: true }) customerCreditCardsComponent;
+  @ViewChild(CustomerDetailComponent, { static: true }) customerDetailComponent;
 
   constructor(
     private countryService: CountryService
@@ -44,10 +44,10 @@ export class CustomerMasterComponent implements OnInit, AfterViewInit {
       statusIsTrue
     );
 
-    this.formIsValid$ = combineLatest(basicFormStatus,
+    this.formIsValid$ = combineLatest([basicFormStatus,
                                       addressFormStatus,
-                                      creditCardFormStatus).pipe(
-                                          map((statuses: boolean[]) => statuses.every(status => status === true))
+                                      creditCardFormStatus]).pipe(
+                                          map((statuses) => statuses.every(status => status === true))
                                       );
   }
 
