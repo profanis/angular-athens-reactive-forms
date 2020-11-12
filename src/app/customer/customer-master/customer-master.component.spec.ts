@@ -1,8 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
-import { CustomerMasterComponent } from "./customer-master.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CustomerDetailComponent } from "../customer-address/customer-address.component";
+import { CustomerMasterComponent } from "./customer-master.component";
+
 
 describe("CustomerMasterComponent", () => {
   let component: CustomerMasterComponent;
@@ -10,7 +11,7 @@ describe("CustomerMasterComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
       declarations: [CustomerMasterComponent, CustomerDetailComponent]
     }).compileComponents();
   }));
@@ -25,7 +26,29 @@ describe("CustomerMasterComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("should have a valid form", () => {
-    // const firstName = component.theForm.get("firstName");
+  fit("should have a valid form", () => {
+    component.theForm.patchValue({
+      "basic": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "age": null,
+        "gender": null,
+        "email": "john@doe.com",
+        "phone": {
+          "areaCode": null,
+          "phoneNumber": null
+        }
+      },
+      "address": {
+        "street": "Street name",
+        "number": "66",
+        "postal": "12345",
+        "country": null
+      },
+      "creditCards": [
+        { "cardAlias": "John", "cardHolderName": "Doe", "cardNumber": "90090921", "ccv": "097" }
+      ]
+    })
+    expect(component.theForm.valid).toBeTruthy()
   });
 });
