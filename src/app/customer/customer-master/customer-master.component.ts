@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-
+import { CountryModel } from '../country.model';
 import { CountryService } from '../customer-address/countries.service';
+
 
 @Component({
   selector: 'app-customer-master',
@@ -12,7 +13,7 @@ import { CountryService } from '../customer-address/countries.service';
 export class CustomerMasterComponent implements OnInit {
 
   theForm: FormGroup;
-  countries$: Observable<any[]>;
+  countries$: Observable<CountryModel[]>;
 
   constructor(
     private countryService: CountryService,
