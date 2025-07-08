@@ -1,9 +1,9 @@
 import { CustomerModule } from "./customer/customer.module";
-import { TestBed, async } from "@angular/core/testing";
+import { TestBed, waitForAsync } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
 
 describe("AppComponent", () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [CustomerModule],
       declarations: [AppComponent]

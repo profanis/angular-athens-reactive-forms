@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-credit-cards',
@@ -8,9 +8,9 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 })
 export class CustomerCreditCardsComponent implements OnInit {
 
-  creditCardsFormArray: FormArray;
+  creditCardsFormArray: UntypedFormArray;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.creditCardsFormArray = this.fb.array([
