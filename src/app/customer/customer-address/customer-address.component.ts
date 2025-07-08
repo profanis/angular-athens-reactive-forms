@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { CountryModel } from '../country.model';
 
@@ -11,12 +11,12 @@ import { CountryModel } from '../country.model';
 })
 export class CustomerDetailComponent implements OnInit {
 
-  addressFormGroup: FormGroup;
+  addressFormGroup: UntypedFormGroup;
 
   @Input()
   countries: CountryModel[];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.addressFormGroup = this.initAddressFormModel();
